@@ -1,34 +1,70 @@
-## Usage
+<center>  
+    <h1> Notice: Under development </h1>
+</center>
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+# ![solid-bulma](/images/solid-bulma-banner.jpg)
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+<br/>
 
+
+## Features
+- Documented and Self explaining methods
+- Small size without any external libraries
+
+<br/>
+
+## Installation
+The plugin are available in node and yarn and package managers.
 ```bash
-$ npm install # or pnpm install or yarn install
+# Node
+npm install solid-bulma # Not yet published
+
+# Yarn
+yarn add solid-bulma # Not yet published
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+<br/>
 
-## Available Scripts
+## Usage
 
-In the project directory, you can run:
+### **Stylesheet**
+Import the Bulma css in your css file.
+```css
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+```
 
-### `npm dev` or `npm start`
+You can also import the stylesheet in your HTML file
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Bulma style is also available in SASS
+```bash
+# Node
+npm install bulma
+```
 
-The page will reload if you make edits.<br>
+<br/>
 
-### `npm run build`
+### **Components**
+Using solid-bulma components
+```jsx
+import { BButton } from 'solid-bulma';
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+function App() {
+    return (
+        <div>
+            <b-button
+                color={'primary'}
+                isLight={true}>
+                Button
+            </b-button>
+        </div>
+    )
+}
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<br/>
 
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+## License
+Code released under [MIT](https://github.com/jaoaustero/solid-bulma/blob/main/LICENSE) license.
