@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import styles from './App.module.css';
 
+import BButton from '../src/elements/button/BButton';
+
 function App() {
+  const handleClick = () => {
+    console.log('click');
+  };
+
   return (
     <div class={styles.App}>
       <header class={styles.header}>
@@ -17,6 +23,15 @@ function App() {
         >
           Learn Solid
         </a>
+
+        <BButton
+          is="span"
+          class="test try for multiple"
+          color="primary"
+          size="large"
+          isStatic={true}>
+          Button
+        </BButton>
       </header>
     </div>
   );
