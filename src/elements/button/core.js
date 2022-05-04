@@ -1,3 +1,5 @@
+import { callEventHandler } from '@/helpers/events';
+
 function ButtonCore(options) {
 	/**
 	 * Check if the button element has attributes for links
@@ -39,7 +41,13 @@ function ButtonCore(options) {
 		return options.is;
 	};
 
-	const clickHandler = (event) => {
+	/**
+	 * Handle onClick event
+	 * 
+	 * @param {} event 
+	 * @returns 
+	 */
+	const onClickHandler = (event) => {
 		if (options.disabled || tagName() === 'a') {
 			event.preventDefault();
 		}
@@ -47,6 +55,20 @@ function ButtonCore(options) {
 		if (options.disabled) {
 			event.stopPropagation();
 			return;
+		}
+
+		callEventHandler(options.onClick, event);
+	};
+
+	/**
+	 * Handle any keydown on the element
+	 * 
+	 * @param {*} event 
+	 */
+	const onKeydownHandler = (event) => {
+		if (event.key === '') {
+			event.preventDefault();
+			onClickHandler()(event);
 		}
 	};
 
@@ -64,15 +86,33 @@ function ButtonCore(options) {
 
 		role : 'button',
 
-		tabIndex : undefined,
+		get tabIndex() {
+			return options.disabled ? undefined : options.tabIndex;
+		},
 
-		href : getHref(),
+		get href() {
+			return getHref();
+		},
 
-		target : isLink() ? options.target : undefined,
+		get target() {
+			return isLink() ? options.target : undefined;
+		},
 
-		rel : isLink() ? options.rel : undefined,
+		get rel() {
+			return isLink() ? options.rel : undefined;
+		},
 
-		'aria-disabled' : options.disabled ? true : undefined
+		get	'aria-disabled'() {
+			return options.disabled ? options.disabled : undefined;
+		},
+
+		get onClick() {
+			return onClickHandler();
+		},
+
+		get onKeyDown() {
+			return onKeydownHandler();
+		}
 	};
 };
 
