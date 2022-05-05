@@ -78,7 +78,9 @@ function ButtonCore(options) {
 	 * @returns {object} - Button roles and attributes
 	 */
 	return {
-		is : tagName(),
+		get is() {
+			return tagName();
+		},
 
 		type : 'button',
 
